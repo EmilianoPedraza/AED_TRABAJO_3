@@ -1,0 +1,31 @@
+# --- Entornos Virtuales (Virtual Environments) ---
+.venv/
+venv/
+ENV/
+env/
+
+# --- Configuración de PyCharm / IntelliJ ---
+.idea/
+*.iml
+
+# --- Caché y archivos generados por Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+htmlcov/
+.toast/
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Archivos de variables de entorno (Datos sensibles) ---
+.env
+.env.local
+.env.*.local
+
+# --- Archivos del Sistema Operativo ---
+.DS_Store
+Thumbs.db
