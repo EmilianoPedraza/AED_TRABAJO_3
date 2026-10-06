@@ -17,8 +17,8 @@ def principal():
         if op == 1:
             tratamientos = opcion1_cargar_tratamientos('tratamientos.csv')
         if op == 2:
-            opcion2_mostrar_resultados(tratamientos)
-
+            if len(tratamientos) != 0:
+              opcion2_mostrar_resultados(tratamientos)
 
 if __name__ == '__main__':
     principal()
