@@ -1,7 +1,7 @@
 from clases.tratamiento import Tratamiento
 
 
-def parsear_paciente(cad):
+def parsear_paciente(cadena):
     """
     Parsea una cadena de texto que contiene los datos de un tratamiento
     y crea un objeto Tratamiento a partir de ellos.
@@ -14,8 +14,10 @@ def parsear_paciente(cad):
                 separados por comas.
     :return: Objeto Tratamiento creado a partir de los datos de la cadena.
     """
-    datos = cad.split(',')
+    datos = cadena.split(',')
     dni, nom, apell, cod, mont_b, compl, id = datos  # Extraigo datos de la cadena
+
+    
     return Tratamiento(dni, nom, apell, cod, float(mont_b), compl, int(id))
 
 
@@ -72,6 +74,6 @@ if __name__ == '__main__':
              f'{'CODIGO':>8}' +
              f'{'ID':^10}' +
              f'{'MONTO BASE':<2}')
-    tratamientos = procesar_tratamientos('../tratamientos.csv', True)#BORRAR ULTIMO PARAMETRO LUEGO
+    tratamientos = procesar_tratamientos('../tratamientos.csv', True) #BORRAR ULTIMO PARAMETRO LUEGO
     print('TRATAMIENTOS REGISTRADOS')
     print(tratamientos)
