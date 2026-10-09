@@ -10,53 +10,57 @@ def mostrar_result(r_n, val):
     """
     print(f'{r_n}: {val}')
 
+
 def obtener_posicion_letra(letra):
-  letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  for i in range(len(letras)):
-    if letra.upper() == letras[i].upper():
-      return i
-  return -1
+    letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    for i in range(len(letras)):
+        if letra.upper() == letras[i].upper():
+            return i
+    return -1
+
 
 def obtener_letra_con_posicion(indice):
-  letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  if indice > len(letras) - 1 or indice < 0:
-    return ""
-  return letras[indice]
+    letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    if indice > len(letras) - 1 or indice < 0:
+        return ""
+    return letras[indice]
+
 
 def opcion2_mostrar_resultados(tratamientos):
-  total_dif = 0
-  mas_tratamientos = [0] * 26
-  mayor_monto_final = 0
-  dni_tratamiento_final = 0
-  
-  for i in range(len(tratamientos)):
-    tratamiento = tratamientos[i]
+    """
+    :param tratamientos: Arreglo de registros de tratamientos
+    :return: None
+    """
+    total_dif = 0
+    mas_tratamientos = [0] * 26
+    mayor_monto_final = 0
+    dni_tratamiento_final = 0
 
-    total_dif += tratamiento.monto_final - tratamiento.monto_base
-    mas_tratamientos[obtener_posicion_letra(tratamiento.codigo[0])] += 1
+    for i in range(len(tratamientos)):
+        t = tratamientos[i] #tratamiento
+        total_dif += t.monto_final - t.monto_base
+        mas_tratamientos[obtener_posicion_letra(t.codigo[0])] += 1
 
-    if tratamiento.complejidad == "A" and mayor_monto_final < tratamiento.monto_final:
-      mayor_monto_final = tratamiento.monto_final
+        if t.complejidad == "A" and mayor_monto_final < t.monto_final:
+            mayor_monto_final = t.monto_final
 
-      ## PREGUNTAR EN CLASES SOBRE QUE PASA SI NO HAY
-      dni_tratamiento_final = tratamiento.dni
+            ## PREGUNTAR EN CLASES SOBRE QUE PASA SI NO HAY
+            dni_tratamiento_final = t.dni
 
-    
+    max_value = 0
+    letra_mayor = ""
+    for i in range(len(mas_tratamientos)):
+        if max_value < mas_tratamientos[i]:
+            letra_mayor = obtener_letra_con_posicion(i)
+            max_value = mas_tratamientos[i]
 
-  max_value = 0
-  letra_mayor = ""
-  for i in range(len(mas_tratamientos)):
-    if max_value < mas_tratamientos[i]:
-      letra_mayor = obtener_letra_con_posicion(i)
-      max_value = mas_tratamientos[i]
+    mostrar_result("r.2.1", int(total_dif // len(tratamientos)))# La diferencia promedio
+    # entre el monto final y el monto base de todos los
+    #tratamientos en el vector
+    mostrar_result("r.2.2", letra_mayor)
+    mostrar_result("r.2.3", max_value)
+    mostrar_result("r.2.4", dni_tratamiento_final)
 
-
-
-  mostrar_result("r.2.1", int(total_dif // len(tratamientos)))
-  mostrar_result("r.2.2", letra_mayor)
-  mostrar_result("r.2.3", max_value)
-  mostrar_result("r.2.4", dni_tratamiento_final)
-  
 
 def opcion1_cargar_tratamientos(f_d):
     """
@@ -77,6 +81,7 @@ def opcion1_cargar_tratamientos(f_d):
         return tratamientos
     mostrar_result('r1.2', 'No hay suficientes tratamientos de alta complejidad.')
     return tratamientos
+
 
 if __name__ == '__main__':
     opcion1_cargar_tratamientos('../tratamientos.csv')

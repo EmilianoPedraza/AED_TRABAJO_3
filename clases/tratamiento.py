@@ -32,13 +32,10 @@ class Tratamiento:
 
 
         codigo_porcentaje = int(codigo[4:])
-
+        #algoritmos de cálculo del monto final-id 1
         if (id == 1):
-          porcentaje_extra = 0
-          suma_fija = 0
-          monto_al = 0
-          if (monto_base > 60_000):
-            codigo[4:]
+          porcentaje_extra = suma_fija = monto_al = 0
+          if (monto_base > 60000):
             if "A" <= codigo[0] <= "L":
               monto_al = 25000
             elif self.complejidad == "A" and codigo[0] != "U":
@@ -47,7 +44,7 @@ class Tratamiento:
 
           porcentaje_extra = (monto_base + suma_fija + monto_al) / 100
           self.monto_final = monto_base + porcentaje_extra + suma_fija + monto_al
-
+        #algoritmos de cálculo del monto final-id 2
         if (id == 2):
           porcentaje_extra = 0
           if "A" <= codigo[0] <= "P":
@@ -59,7 +56,7 @@ class Tratamiento:
             porcentaje_extra = monto_base * 15 / 100
 
           self.monto_final = monto_base = porcentaje_extra
-
+        #algoritmos de cálculo del monto final-id 3
         if (id == 3):
           monto_extra = 0
           monto_fijo = 0
@@ -69,11 +66,11 @@ class Tratamiento:
           if "A" <= codigo[0] <= "L":
               monto_fijo = 20000
           elif "M" <= codigo[0] <= "P":
-              monto_fijo = 15_000 + 5_000 * int(codigo[1:3])
+              monto_fijo = 15000 + 5000 * int(codigo[1:3])
           else:
               monto_fijo+= 100000
           
-          monto_extra = min(monto_extra, 60_000)
+          monto_extra = min(monto_extra, 60000)
           self.monto_final = monto_base + monto_extra + monto_fijo
           
         else:
