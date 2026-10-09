@@ -3,7 +3,6 @@ from funciones.procesamiento_tratamientos import procesar_tratamientos
 
 def mostrar_result(r_n, val):
     """
-    Muestra por pantalla un resultado identificado mediante una etiqueta.
     :param r_n: Identificador o número del resultado que se desea mostrar.
     :param val: Valor correspondiente al resultado.
     :return: None.

@@ -3,11 +3,10 @@ from clases.tratamiento import Tratamiento
 
 def parsear_paciente(cadena):
     """
-    Parsea una cadena de texto que contiene los datos de un tratamiento
+    Parsea una cadena de texto que contiene datos de un tratamiento
     y crea un objeto Tratamiento a partir de ellos.
 
-    La cadena debe contener los datos separados por comas y en el siguiente
-    orden: DNI, nombre, apellido, código, monto base, complejidad e ID.
+    DNI, nombre, apellido, código, monto base, complejidad e ID.
     El monto base se convierte a float y el ID se convierte a int.
 
     :param cad: Cadena de texto que contiene los datos de un tratamiento
